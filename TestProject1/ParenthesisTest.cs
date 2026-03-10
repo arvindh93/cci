@@ -41,6 +41,17 @@ public class ParenthesisTest
         AssertArrayCollections(actual, expected);    
     }
 
+    [TestMethod]
+    public void ParenthesisForFour()
+    {
+        //GenerateParenthesis
+        //["(((())))","((()()))","((())())","((()))()","(()(()))","(()()())","(()())()","(())(())","(())()()","()((()))","()(()())","()(())()","()()(())","()()()()"]
+        Parenthesis p = new Parenthesis();
+        HashSet<string> actual = p.GetParens(4);
+        HashSet<string> expected = ["(((())))","((()()))","((())())","((()))()","(()(()))","(()()())","(()())()","(())(())","(())()()","()((()))","()(()())","()(())()","()()(())","()()()()"];
+        AssertArrayCollections(actual, expected); 
+    }
+
     static void AssertArrayCollections(HashSet<string> actual, HashSet<string> expected)
     {
         Assert.AreEqual(actual.Count, expected.Count);

@@ -4,6 +4,10 @@ public class Parenthesis
 {
     public HashSet<string> GetParens(int n)
     {
+        if (n == 0)
+        {
+            return [];
+        }
         if (n == 1)
         {
             return ["()"];
@@ -13,9 +17,15 @@ public class Parenthesis
         HashSet<string> result = [];
         foreach (string p in prevResult)
         {
-            result.Add(string.Concat("()", p));
-            result.Add(string.Concat("(", p, ")"));
-            result.Add(string.Concat(p, "()"));
+            //loop each string 
+            for (int i = 0; i < p.Length; i++)
+            {
+                if (p[i] == '(')
+                {
+                    result.Add(p[..(i+1)] + "()" + p[(i+1)..]);
+                }
+            }
+            result.Add("()" + p);
         }
         
         return result;
